@@ -39,9 +39,11 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             $userProfile = $form->getData();
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($userProfile);
             $entityManager->flush();
+
             return $this->redirectToRoute('profile_success');
         }        
 
